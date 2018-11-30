@@ -15,6 +15,10 @@ module.exports = (env) => {
           test: /\.js$/,
           exclude: /node_modules/,
         },
+        {
+          test: /\.s?css$/,
+          loader: 'css-loader',
+        },
       ],
     },
     devtool: isProduction ? 'source-map' : '',
@@ -22,6 +26,11 @@ module.exports = (env) => {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,
       publicPath: '/dist/',
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+      },
     },
   };
 };
