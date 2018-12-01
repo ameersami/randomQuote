@@ -15,20 +15,18 @@ const defaultSettings = {
 };
 
 const convertToAttributes = (str) => {
-  str = str.replace(/:/gi, "=").replace(/"|\}|\{/gi, "");
-  console.log(str);
-  return str;
+  return str.replace(/:/gi, "=").replace(/"|\}|\{/gi, "");
 }
 
 export default ({text, settings = {} }) => {
   settings = convertToAttributes(JSON.stringify({ ...defaultSettings, ...settings }));
   return(
-    <Anchor  onClick={() => window.open(`https://twitter.com/intent/tweet?text=${text}`,
-                    'mywindow',
-                    settings)}
+    <Anchor onClick={() => window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`, 'mywindow', settings)}
             href="#">
+
               <img src="/dist/Twitter_Bird.svg"/>
               Tweet
+
     </Anchor>
   );
 }

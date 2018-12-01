@@ -8,14 +8,13 @@ export default (props ) => {
       {props.children}
     </GradientBackground>
   );
-
 };
 
 
 const GradientBackground = styled.div`
     background: linear-gradient(
       ${props => props.direction ? props.direction + ', ' : ''}
-      ${props => props.color ?  props.color.from + ' 0%, ' + props.color.to + ' 100%'  : 'white 100%, black 100%'}
+      ${props => props.color ?  props.color.from + ' 0%, ' + props.color.to + ' 100%'  : '#ffffff 100%, #000000 100%'}
     );
     height: 100%;
     width: 100%
@@ -36,7 +35,7 @@ const GradientBackground = styled.div`
   const Title = styled.h1`
     color: white;
     font-size: 60px;
-    position: absolute;
-    top: 60px;
+    position: relative;
+    text-align: center;
   `;
 
